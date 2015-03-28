@@ -1,10 +1,14 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('AppCtrl', function ($rootScope, $scope, $window, $ionicModal, popup, loading, modal, gravatar, User) {
+    .controller('AppCtrl', function ($rootScope, $scope, $window, $ionicModal, $ionicSideMenuDelegate, popup, loading, modal, gravatar, User) {
         // Form data for the login modal
         $scope.loginData = {};
         $scope.registerData = {};
+
+        $scope.toggleLeft = function () {
+            $ionicSideMenuDelegate.toggleLeft();
+        };
 
         $rootScope.currentUser = User.current();
 

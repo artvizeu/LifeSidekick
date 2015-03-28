@@ -10,51 +10,17 @@
                 <a class="button" ui-sref="app.edit-profile">Edit Profile</a>
             </div>
         </div>
-        <div class="list">
-            <div class="list card">
 
-                <div class="item">
-                    <h2>My Item 1</h2>
-
-                    <p>Mart 28, 2015</p>
-                </div>
-
-                <div class="item item-body">
-                    <img class="full-image" src="">
-
-                    <p>
-                        Description bla bla bal...
-                    </p>
-                </div>
-
-
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        Detail
-                    </a>
-                </div>
+        <div class="row center">
+            <div class="col">
+                <a class="button button-positive" ui-sref="app.profile.about.wishes">Wishes</a>
             </div>
-            <div class="list card">
-                <div class="item">
-                    <h2>My Item 2</h2>
-
-                    <p>Mart 28, 2015</p>
-                </div>
-
-                <div class="item item-body">
-                    <img class="full-image" src="">
-
-                    <p>
-                        Description bla bla bal...
-                    </p>
-                </div>
-
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        Detail
-                    </a>
-                </div>
+            <div class="col">
+                <a class="button button-positive" ui-sref="app.profile.about.offers">Offers</a>
             </div>
+        </div>
+        <div>
+            <ion-nav-view name="mainContent"></ion-nav-view>
         </div>
     </ion-content>
 </ion-view>

@@ -93,6 +93,22 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     }
                 }
             })
+            .state('app.profile.about.wishes', {
+                url: "/wishes",
+                views: {
+                    'mainContent': {
+                        templateUrl: "templates/profile/my-wishes.html"
+                    }
+                }
+            })
+            .state('app.profile.about.offers', {
+                url: "/offers",
+                views: {
+                    'mainContent': {
+                        templateUrl: "templates/profile/my-offers.html"
+                    }
+                }
+            })
             .state('app.edit-profile', {
                 url: "/edit-profile",
                 views: {
