@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .factory("Dummy", function () {
         var Dummy = Parse.Object.extend("Dummy", {
             // Instance methods

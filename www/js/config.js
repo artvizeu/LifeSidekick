@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .factory("config", function () {
         return {
             APP_ID: 'lxAsQ1JgMWELK3HRFTUDnvkptQZThWmecgf7LiZX',

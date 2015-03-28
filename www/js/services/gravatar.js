@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .factory("gravatar", function () {
 
         var get = function (email, size) {

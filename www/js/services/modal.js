@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .factory("modal", function ($ionicModal) {
         var show = function (templateUrl, scopeRef, callback) {
             var modal = $ionicModal.fromTemplateUrl(templateUrl, {

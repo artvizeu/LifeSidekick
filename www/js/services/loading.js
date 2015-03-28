@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .factory("loading", function ($ionicLoading) {
         var show = function () {
             $ionicLoading.show({

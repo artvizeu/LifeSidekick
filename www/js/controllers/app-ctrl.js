@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .controller('AppCtrl', function ($rootScope, $scope, $window, $ionicModal, popup, loading, modal, gravatar, User) {
         // Form data for the login modal
         $scope.loginData = {};

@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .factory("User", function () {
         Parse.User.extend({
             getUsername: function () {

@@ -1,6 +1,6 @@
 "use strict";
 
-ionicParseSeed
+lifeSidekickApp
     .factory("popup", function ($ionicPopup) {
         var alert = function (title, message, callback) {
             var alertPopup = $ionicPopup.alert({

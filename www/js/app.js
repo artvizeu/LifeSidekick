@@ -1,6 +1,6 @@
 "use strict";
 
-var ionicParseSeed = angular.module('starter', ['ionic'])
+var lifeSidekickApp = angular.module('starter', ['ionic'])
 
     .run(function ($ionicPlatform, config) {
         $ionicPlatform.ready(function () {
@@ -18,7 +18,7 @@ var ionicParseSeed = angular.module('starter', ['ionic'])
         });
     })
 
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
 
             .state('app', {
@@ -32,29 +32,34 @@ var ionicParseSeed = angular.module('starter', ['ionic'])
                 abstract: true,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/home/home.html",
-                        controller: 'HomeCtrl'
+                        templateUrl: "templates/home/home.html"
                     }
                 }
-            }).state('app.home.wishes-feed', {
+            })
+            .state('app.home.wishes-feed', {
                 url: "/wishes-feed",
                 views: {
                     'wishes-feed': {
-                        templateUrl: "templates/home/wishes-feed.html"
+                        templateUrl: "templates/home/wishes-feed.html",
+                        controller: 'WishesFeedCtrl'
                     }
                 }
-            }).state('app.home.new-wish', {
+            })
+            .state('app.home.new-wish', {
                 url: "/new-wish",
                 views: {
                     'new-wish': {
-                        templateUrl: "templates/home/new-wish.html"
+                        templateUrl: "templates/home/new-wish.html",
+                        controller: 'NewWishCtrl'
                     }
                 }
-            }).state('app.wish-detail', {
+            })
+            .state('app.wish-detail', {
                 url: "/wish-detail/:wishId",
                 views: {
                     'wish-detail': {
-                        templateUrl: "templates/home/wish-detail.html"
+                        templateUrl: "templates/home/wish-detail.html",
+                        controller: 'WishDetailCtrl'
                     }
                 }
             })
@@ -71,21 +76,71 @@ var ionicParseSeed = angular.module('starter', ['ionic'])
                 url: "/about",
                 views: {
                     'about': {
-                        templateUrl: "templates/profile/about.html"
+                        templateUrl: "templates/profile/about.html",
+                        controller: 'AboutCtrl'
                     }
                 }
-            }).state('app.profile.edit-profile', {
+            })
+            .state('app.profile.edit-profile', {
                 url: "/edit-profile",
                 views: {
                     'edit-profile': {
-                        templateUrl: "templates/profile/edit-profile.html"
+                        templateUrl: "templates/profile/edit-profile.html",
+                        controller: 'EditProfileCtrl'
                     }
                 }
-            }).state('app.profile.history', {
+            })
+            .state('app.profile.history', {
                 url: "/history",
                 views: {
                     'history': {
-                        templateUrl: "templates/profile/history.html"
+                        templateUrl: "templates/profile/history.html",
+                        controller: 'HistoryCtrl'
+                    }
+                }
+            })
+            .state('app.offers', {
+                url: "/offers",
+                abstract: true,
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/offers/offers.html"
+                    }
+                }
+            })
+            .state('app.offers.new-offer', {
+                url: "/new-offer",
+                views: {
+                    'new-offer': {
+                        templateUrl: "templates/offers/new-offer.html",
+                        controller: 'NewOfferCtrl'
+                    }
+                }
+            })
+            .state('app.offers.on-working-offers', {
+                url: "/on-working-offers",
+                views: {
+                    'on-working-offers': {
+                        templateUrl: "templates/offers/on-working-offers.html",
+                        controller: 'OnWorkingOffersCtrl'
+                    }
+                }
+            })
+            .state('app.offers.my-offers', {
+                url: "/my-offers",
+                views: {
+                    'my-offers': {
+                        templateUrl: "templates/offers/my-offers.html",
+                        controller: 'MyOffersCtrl'
+                    }
+                }
+            })
+            .state('app.inbox', {
+                url: "/inbox",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/inbox.html",
+                        controller: 'InboxCtrl'
                     }
                 }
             });
