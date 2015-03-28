@@ -23,6 +23,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Our style
 
+ul.rating li {
+  display: inline;
+  border: 0px;
+  background: none;
+  padding: 5px 1px;
+}
+ul.rating li i {
+  font-size: 30px;
+}
+
 a {
   color: $positive;
 }

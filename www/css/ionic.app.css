@@ -7603,6 +7603,15 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+ul.rating li {
+  display: inline;
+  border: 0px;
+  background: none;
+  padding: 5px 1px; }
+
+ul.rating li i {
+  font-size: 30px; }
+
 a {
   color: #387ef5; }
 

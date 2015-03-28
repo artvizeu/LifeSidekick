@@ -1,6 +1,6 @@
 "use strict";
 
-var lifeSidekickApp = angular.module('starter', ['ionic'])
+var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating'])
 
     .run(function ($ionicPlatform, config) {
         $ionicPlatform.ready(function () {
@@ -81,10 +81,10 @@ var lifeSidekickApp = angular.module('starter', ['ionic'])
                     }
                 }
             })
-            .state('app.profile.edit-profile', {
+            .state('app.edit-profile', {
                 url: "/edit-profile",
                 views: {
-                    'edit-profile': {
+                    'menuContent': {
                         templateUrl: "templates/profile/edit-profile.html",
                         controller: 'EditProfileCtrl'
                     }

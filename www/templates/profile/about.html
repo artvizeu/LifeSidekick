@@ -1,5 +1,60 @@
 <ion-view view-title="About">
     <ion-content>
+        <div id="profile-box" class="row">
+            <div class="col ">
+                <img ng-src="{{getGravatarUrl()}}" alt=""/>
+            </div>
+            <div class="col col-75 center">
+                <div>Pesho</div>
+                <rating ng-model="rate" max="max"></rating>
+                <a class="button" ui-sref="app.edit-profile">Edit Profile</a>
+            </div>
+        </div>
+        <div class="list">
+            <div class="list card">
 
+                <div class="item">
+                    <h2>My Item 1</h2>
+
+                    <p>Mart 28, 2015</p>
+                </div>
+
+                <div class="item item-body">
+                    <img class="full-image" src="delorean.jpg">
+
+                    <p>
+                        Description bla bla bal...
+                    </p>
+                </div>
+
+
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item" href="#">
+                        Detail
+                    </a>
+                </div>
+            </div>
+            <div class="list card">
+                <div class="item">
+                    <h2>My Item 2</h2>
+
+                    <p>Mart 28, 2015</p>
+                </div>
+
+                <div class="item item-body">
+                    <img class="full-image" src="delorean.jpg">
+
+                    <p>
+                        Description bla bla bal...
+                    </p>
+                </div>
+
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item" href="#">
+                        Detail
+                    </a>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
