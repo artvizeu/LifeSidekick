@@ -1,5 +1,38 @@
 <ion-view view-title="My Offers">
     <ion-content>
+        <div class="list card" ng-repeat="offer in offers">
 
+            <div class="item item-avatar">
+                <h2>{{offer.name}}</h2>
+                <p>{{offer.date | date: 'dd/MM/yyyy'}}</p>
+            </div>
+
+            <div class="item item-body">
+                <p ng-click="test()">
+                    {{offer.description}}
+                </p>
+                <p>
+                    <h3>Status: {{offer.status}}</h3>
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.status != 'Done' ">
+                <a class="tab-item" href="#">
+                    <!--<i class="icon ion-checkmark-round"></i>-->
+                    Send Offer
+                </a>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.status == 'Done' ">
+                <a class="tab-item" href="#">
+                    <!--<i class="icon ion-checkmark-round"></i>-->
+                    Pay
+                </a>
+            </div>
+        </div>
     </ion-content>
+    <ion-footer-bar>
+        <button class="button button-full button-balanced" ui-sref="app.new-offer">
+            New Offer
+        </button>
+    </ion-footer-bar>
 </ion-view>

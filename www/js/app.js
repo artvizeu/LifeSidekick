@@ -108,10 +108,10 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating'])
                     }
                 }
             })
-            .state('app.offers.new-offer', {
+            .state('app.new-offer', {
                 url: "/new-offer",
                 views: {
-                    'new-offer': {
+                    'menuContent': {
                         templateUrl: "templates/offers/new-offer.html",
                         controller: 'NewOfferCtrl'
                     }
