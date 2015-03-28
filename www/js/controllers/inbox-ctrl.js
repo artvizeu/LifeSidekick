@@ -2,7 +2,7 @@
 
 lifeSidekickApp
     .controller('InboxCtrl', function($rootScope, $scope, $ionicSwipeCardDelegate) {
-        var cardTypes = [{
+        var offers = [{
             offerCreator: 'Ivan Ivanov',
             avatar: "img/img.jpg",
             name: 'Create some software',
@@ -43,22 +43,8 @@ lifeSidekickApp
             date: new Date("March 28, 2015 11:13:00"),
             price: '7'
         }];
-
-//        $scope.cards = Array.prototype.slice.call(cardTypes, 0, 1);
-        $scope.cards = cardTypes;
-
-        $scope.cardDestroyed = function(index) {
-            $scope.cards.splice(index, 1);
-        };
-
-        $scope.addCard = function() {
-            var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-            newCard.id = Math.random();
-            $scope.cards.push(angular.extend({}, newCard));
+        $scope.offers=offers;
+        $scope.decline=function(index){
+            $scope.offers.splice(index, 1);
         }
-    }).controller('CardCtrl', function($scope, $ionicSwipeCardDelegate) {
-        $scope.goAway = function() {
-            var card = $ionicSwipeCardDelegate.getSwipeableCard($scope);
-            card.swipe();
-        };
     });
