@@ -1,5 +1,20 @@
 <ion-view view-title="Wish Detail">
     <ion-content>
+        <div class="list card">
+            <div class="item item-body item-stable center">
+                <h2>{{ wish.username }}</h2>
+            </div>
 
+            <div class="item item-body">
+                <h3>
+                    {{ wish.name }}
+                </h3>
+
+                <p>{{ wish.description }}</p>
+
+                <p>{{ wish.workedMoney | currency }} / {{wish.price | currency}}</p>
+                <progress max="100" value="{{calculateProgress(wish)}}"></progress>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

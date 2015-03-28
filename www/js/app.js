@@ -57,7 +57,7 @@ var lifeSidekickApp = angular.module('starter', ['ionic'])
             .state('app.wish-detail', {
                 url: "/wish-detail/:wishId",
                 views: {
-                    'wish-detail': {
+                    'menuContent': {
                         templateUrl: "templates/home/wish-detail.html",
                         controller: 'WishDetailCtrl'
                     }

@@ -1,5 +1,24 @@
 <ion-view view-title="New Wish">
     <ion-content>
+        <form ng-submit="createNewWish(newWishData)">
+            <div class="list">
+                <!--add picture upload eventually-->
+                <label class="item item-input item-stacked-label">
+                    <input type="text" ng-model="newWishData.name" placeholder="Name:">
+                </label>
 
+                <label class="item item-input item-stacked-label">
+                    <input type="text" ng-model="newWishData.description" placeholder="Description:">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <input type="email" ng-model="newWishData.price" placeholder="Price:">
+                </label>
+
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Save</button>
+                </label>
+            </div>
+        </form>
     </ion-content>
 </ion-view>
