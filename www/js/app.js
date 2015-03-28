@@ -1,6 +1,6 @@
 "use strict";
 
-var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating'])
+var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic.contrib.ui.cards'])
 
     .run(function ($ionicPlatform, config) {
         $ionicPlatform.ready(function () {

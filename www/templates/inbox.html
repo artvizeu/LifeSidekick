@@ -1,5 +1,44 @@
 <ion-view view-title="Inbox">
     <ion-content>
+        <div class="card" ng-if="cards.length==0">
+            <div class="item item-text-wrap">
+                No more offers
+            </div>
+        </div>
+        <swipe-cards>
+            <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
+                <div class="list card" ng-controller="CardCtrl">
 
+                    <div class="item item-avatar">
+                        <img src="{{card.avatar}}">
+                        <h2>{{card.offerCreator}}</h2>
+                        <p>{{card.date | date:'dd/MM/yyyy'}}</p>
+                    </div>
+
+                    <div class="item item-body">
+                        <h2>{{card.name}}</h2>
+                        <p>
+                            {{card.description}}
+                        </p>
+
+                        <p>
+                        <h3>Price: ${{card.price}}</h3>
+                        </p>
+                    </div>
+
+                    <div class="item tabs tabs-secondary tabs-icon-left">
+                        <a class="tab-item" href="#" ng-click="goAway()">
+                            <i class="icon ion-checkmark-round"></i>
+                            Accept
+                        </a>
+                        <a class="tab-item" href="#" ng-click="goAway()">
+                            <i class="icon ion-close-round"></i>
+                            Decline
+                        </a>
+                    </div>
+
+                </div>
+            </swipe-card>
+        </swipe-cards>
     </ion-content>
 </ion-view>
