@@ -31,32 +31,59 @@ var ionicParseSeed = angular.module('starter', ['ionic'])
                 url: "/home",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/home.html",
+                        templateUrl: "templates/home/home.html",
                         controller: 'HomeCtrl'
                     }
                 }
-            }).state('app.home.tab1', {
-                url: "/tab1",
+            }).state('app.home.wishes-feed', {
+                url: "/wishes-feed",
                 views: {
-                    'tab1': {
-                        templateUrl: "templates/tab1.html"
+                    'wishes-feed': {
+                        templateUrl: "templates/home/wishes-feed.html"
                     }
                 }
-            }).state('app.home.tab2', {
-                url: "/tab2",
+            }).state('app.home.new-wish', {
+                url: "/new-wish",
                 views: {
-                    'tab2': {
-                        templateUrl: "templates/tab2.html"
+                    'new-wish': {
+                        templateUrl: "templates/home/new-wish.html"
                     }
                 }
-            }).state('app.home.tab3', {
-                url: "/tab3",
+            }).state('app.wish-detail', {
+                url: "/wish-detail/:wishId",
                 views: {
-                    'tab3': {
-                        templateUrl: "templates/tab3.html"
+                    'wish-detail': {
+                        templateUrl: "templates/home/wish-detail.html"
+                    }
+                }
+            })
+            .state('app.profile', {
+                url: "/profile",
+                abstract: true,
+                templateUrl: "templates/profile/profile.html"
+            })
+            .state('app.profile.about', {
+                url: "/about",
+                views: {
+                    'about': {
+                        templateUrl: "templates/profile/about.html"
+                    }
+                }
+            }).state('app.profile.edit-profile', {
+                url: "/edit-profile",
+                views: {
+                    'edit-profile': {
+                        templateUrl: "templates/profile/edit-profile.html"
+                    }
+                }
+            }).state('app.profile.history', {
+                url: "/history",
+                views: {
+                    'history': {
+                        templateUrl: "templates/profile/history.html"
                     }
                 }
             });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/home');
+        $urlRouterProvider.otherwise('/app/home/wishes-feed');
     });
