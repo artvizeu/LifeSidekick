@@ -1,28 +1,22 @@
 <ion-view view-title="Wishes Feed">
     <ion-content>
-        <div class="list" collection-repeat="wish in wishes">
-            <div class="list card">
-                <div class="item item-body item-stable">
-                    <h2>{{ wish.username }}</h2>
-                    <p>Mart 28, 2015</p>
-                </div>
+        <div class="list card" collection-repeat="wish in wishes">
+            <div class="item">
+                <h2>{{wish.name}}</h2>
+                <p>by <a href="#">{{wish.ownerName}}</a></p>
+                <p>{{wish.date}}</p>
+            </div>
 
-                <div class="item item-body">
-                    <p>
-                        {{ wish.name }}
-                    </p>
+            <div class="item item-body">
+                <p>{{ wish.description | limitTo:50 }}...</p>
+                <img class="full-image" ng-src="{{wish.picture}}" alt=""/>
+            </div>
 
-                    <p>
-                        {{ wish.description }}
-                    </p>
-                </div>
-
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" ui-sref="app.wish-detail({wishId: wish.id})">
-                        <i class="icon ion-ios-information"></i>
-                        Detail
-                    </a>
-                </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ui-sref="app.wish-detail({wishId: wish.id})">
+                    <i class="icon ion-ios-information"></i>
+                    Detail
+                </a>
             </div>
         </div>
     </ion-content>

@@ -1,50 +1,26 @@
 <ion-view view-title="My Wishes">
     <ion-content>
-        <div class="list">
-            <div class="list card">
-
-                <div class="item">
-                    <h2>My Item 1</h2>
-
-                    <p>Mart 28, 2015</p>
-                </div>
-
-                <div class="item item-body">
-                    <img class="full-image" src="">
-
-                    <p>
-                        Description bla bla bal...
-                    </p>
-                </div>
-
-
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        Detail
-                    </a>
-                </div>
+        <div class="list card" ng-repeat="wish in wishes">
+            <div class="item">
+                <h2>{{wish.name}}</h2>
+                <p>{{wish.date}}</p>
             </div>
-            <div class="list card">
-                <div class="item">
-                    <h2>My Item 2</h2>
 
-                    <p>Mart 28, 2015</p>
-                </div>
-
-                <div class="item item-body">
-                    <img class="full-image" src="">
-
-                    <p>
-                        Description bla bla bal...
-                    </p>
-                </div>
-
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        Detail
-                    </a>
-                </div>
+            <div class="item item-body">
+                <p>{{ wish.description | limitTo:50 }}...</p>
+                <img class="full-image" ng-src="{{wish.picture}}" alt=""/>
             </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item"
+                   ui-sref="app.wish-detail({wishId: wish.id, statePath: 'my-wishes'})">
+                    <i class="icon ion-ios-information"></i>
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div style="height: 200px">
+
         </div>
     </ion-content>
 </ion-view>

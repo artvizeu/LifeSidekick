@@ -1,29 +1,19 @@
 <ion-view view-title="Offers Feed">
     <ion-content>
-        <div class="list" collection-repeat="offer in offers">
-            <div class="list card">
-                <div class="item item-body item-stable">
-                    <h2>{{ offer.owner }}</h2>
+        <div class="list card" ng-repeat="offer in offers">
+            <div class="item">
+                <h2>{{offer.name}}</h2>
+                <p>by <a href="#">Pesho</a></p>
+                <p>{{offer.date | date: 'dd/MM/yyyy'}}</p>
+            </div>
 
-                    <p>{{ offer.date | date:longDate}}</p>
-                </div>
+            <div class="item item-body">
+                <p>{{ offer.name }} - {{ offer.price | currency }}</p>
+                <p>{{ offer.description | limitTo:50 }}...</p>
+            </div>
 
-                <div class="item item-body">
-                    <p>
-                        {{ offer.name }} - {{ offer.price | currency }}
-                    </p>
-
-                    <p>
-                        {{ offer.description | limitTo:50 }} ...
-                    </p>
-                </div>
-
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" ng-click="onApply()">
-                        <i class="icon ion-ios-information"></i>
-                        Apply
-                    </a>
-                </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="onApply()">Apply</a>
             </div>
         </div>
     </ion-content>

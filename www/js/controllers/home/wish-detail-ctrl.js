@@ -1,7 +1,7 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('WishDetailCtrl', function ($scope, $stateParams) {
+    .controller('WishDetailCtrl', function ($scope, $state, $stateParams) {
         $scope.wishes = [
             {
                 username: "pesho",
@@ -33,5 +33,13 @@ lifeSidekickApp
 
         $scope.calculateProgress = function (wish) {
             return (wish.workedMoney / wish.price) * 100;
+        };
+
+        $scope.navigateBack = function () {
+            if ($stateParams.statePath == "my-wishes") {
+                $state.go("app.profile.about.my-wishes");
+            } else {
+                $state.go("app.home.wishes-feed");
+            }
         };
     });

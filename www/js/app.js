@@ -67,7 +67,7 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                 }
             })
             .state('app.wish-detail', {
-                url: "/wish-detail/:wishId",
+                url: "/wish-detail/:wishId/:statePath",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/home/wish-detail.html",
@@ -97,7 +97,8 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                 url: "/my-wishes",
                 views: {
                     'mainContent': {
-                        templateUrl: "templates/profile/my-wishes.html"
+                        templateUrl: "templates/profile/my-wishes.html",
+                        controller: 'MyWishesCtrl'
                     }
                 }
             })
