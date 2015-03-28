@@ -29,6 +29,7 @@ var ionicParseSeed = angular.module('starter', ['ionic'])
             })
             .state('app.home', {
                 url: "/home",
+                abstract: true,
                 views: {
                     'menuContent': {
                         templateUrl: "templates/home/home.html",
@@ -60,7 +61,11 @@ var ionicParseSeed = angular.module('starter', ['ionic'])
             .state('app.profile', {
                 url: "/profile",
                 abstract: true,
-                templateUrl: "templates/profile/profile.html"
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/profile.html"
+                    }
+                }
             })
             .state('app.profile.about', {
                 url: "/about",
