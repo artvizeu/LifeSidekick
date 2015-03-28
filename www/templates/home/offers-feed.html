@@ -1,0 +1,30 @@
+<ion-view view-title="Offers Feed">
+    <ion-content>
+        <div class="list" collection-repeat="offer in offers">
+            <div class="list card">
+                <div class="item item-body item-stable">
+                    <h2>{{ offer.owner }}</h2>
+
+                    <p>{{ offer.date | date:longDate}}</p>
+                </div>
+
+                <div class="item item-body">
+                    <p>
+                        {{ offer.name }} - {{ offer.price | currency }}
+                    </p>
+
+                    <p>
+                        {{ offer.description | limitTo:50 }} ...
+                    </p>
+                </div>
+
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item" ng-click="onApply()">
+                        <i class="icon ion-ios-information"></i>
+                        Apply
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

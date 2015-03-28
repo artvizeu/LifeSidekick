@@ -18,7 +18,10 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+        // set tabs position for all devices because there are different default behaviours
+        $ionicConfigProvider.tabs.position('bottom');
+
         $stateProvider
 
             .state('app', {
@@ -42,6 +45,15 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     'wishes-feed': {
                         templateUrl: "templates/home/wishes-feed.html",
                         controller: 'WishesFeedCtrl'
+                    }
+                }
+            })
+            .state('app.home.offers-feed', {
+                url: "/offers-feed",
+                views: {
+                    'offers-feed': {
+                        templateUrl: "templates/home/offers-feed.html",
+                        controller: 'OffersFeedCtrl'
                     }
                 }
             })
