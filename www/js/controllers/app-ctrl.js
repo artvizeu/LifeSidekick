@@ -68,7 +68,9 @@ lifeSidekickApp
         };
 
         $scope.getGravatarUrl = function () {
+            if ($rootScope.currentUser) {
               return gravatar.getBig($rootScope.currentUser.getEmail());
+            }
         };
 
         function reload() {

@@ -3,6 +3,8 @@
 var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating'])
 
     .run(function ($ionicPlatform, config) {
+        Parse.initialize(config.APP_ID, config.JAVASCRIPT_ID);
+
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -13,8 +15,6 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating'])
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
-
-            Parse.initialize(config.APP_ID, config.JAVASCRIPT_ID);
         });
     })
 
