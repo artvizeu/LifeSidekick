@@ -1,0 +1,36 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar-positive">
+            <h1 class="title">IonicParseSeed</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list>
+                <ion-item class="item-remove-animate item-avatar item-icon-right"
+                        ui-sref="app.home">
+                    <img ng-src="{{getGravatarUrl()}}" alt=""/>
+                    <p>Profile</p>
+                </ion-item>
+                <ion-item ui-sref="app.home">
+                    <p>Home</p>
+                </ion-item>
+                <ion-item ng-click="logout()">
+                    <p>Logout</p>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
+
