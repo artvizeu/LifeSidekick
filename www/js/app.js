@@ -93,19 +93,20 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     }
                 }
             })
-            .state('app.profile.about.wishes', {
-                url: "/wishes",
+            .state('app.profile.about.my-wishes', {
+                url: "/my-wishes",
                 views: {
                     'mainContent': {
                         templateUrl: "templates/profile/my-wishes.html"
                     }
                 }
             })
-            .state('app.profile.about.offers', {
-                url: "/offers",
+            .state('app.profile.about.my-offers', {
+                url: "/my-offers",
                 views: {
                     'mainContent': {
-                        templateUrl: "templates/profile/my-offers.html"
+                        templateUrl: "templates/profile/my-offers.html",
+                        controller: 'MyOffersCtrl'
                     }
                 }
             })
@@ -145,21 +146,12 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     }
                 }
             })
-            .state('app.offers.on-working-offers', {
+            .state('app.on-working-offers', {
                 url: "/on-working-offers",
                 views: {
-                    'on-working-offers': {
+                    'menuContent': {
                         templateUrl: "templates/offers/on-working-offers.html",
                         controller: 'OnWorkingOffersCtrl'
-                    }
-                }
-            })
-            .state('app.offers.my-offers', {
-                url: "/my-offers",
-                views: {
-                    'my-offers': {
-                        templateUrl: "templates/offers/my-offers.html",
-                        controller: 'MyOffersCtrl'
                     }
                 }
             })
