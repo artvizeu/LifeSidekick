@@ -58,6 +58,12 @@ lifeSidekickApp
             setAcceptedUser: function (acceptedUser) {
                 this.set("acceptedUser", acceptedUser);
             },
+            getComment: function () {
+                return this.get("comment");
+            },
+            setComment: function (comment) {
+                this.set("comment", comment);
+            },
             // Instance properties go in an initialize method
             initialize: function (attrs, options) {
 

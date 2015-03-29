@@ -173,6 +173,15 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                         controller: 'InboxCtrl'
                     }
                 }
+            })
+            .state('app.pay', {
+                url: "pay",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/pay.html",
+                        controller: 'PayCtrl'
+                    }
+                }
             });
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home/wishes-feed');
