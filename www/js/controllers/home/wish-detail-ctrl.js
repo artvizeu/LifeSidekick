@@ -1,7 +1,7 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('WishDetailCtrl', function ($scope, $state, $stateParams) {
+    .controller('WishDetailCtrl', function ($scope, $state, $stateParams, Wish) {
         $scope.wishes = [
             {
                 username: "pesho",
@@ -29,11 +29,18 @@ lifeSidekickApp
             }
         ];
 
-        $scope.wish = $scope.wishes[$stateParams.wishId];
+//        $scope.wish = $scope.wishes[$stateParams.wishId];
 
-        $scope.calculateProgress = function (wish) {
-            return (wish.workedMoney / wish.price) * 100;
-        };
+        var query = new Parse.Query(Wish);
+        query.get($stateParams.wishId, {
+            success: function (wish) {
+                $scope.wish = wish;
+            }
+        });
+
+//        $scope.calculateProgress = function (wish) {
+//            return (wish.workedMoney / wish.price) * 100;
+//        };
 
         $scope.navigateBack = function () {
             if ($stateParams.statePath == "my-wishes") {

@@ -2,10 +2,10 @@
     <ion-content>
         <div class="list card" ng-repeat="offer in offers">
 
-            <div class="item item-avatar">
+            <div class="item item-avatar bar bar-header bar-positive">
                 <img src="{{offer.avatar}}">
                 <h2>{{offer.offerCreator}}</h2>
-                <p>{{offer.date | date:'dd/MM/yyyy'}}</p>
+                <p>{{offer.date | date:longDate}}</p>
             </div>
 
             <div class="item item-body">

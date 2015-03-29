@@ -2,10 +2,10 @@
     <ion-content>
         <div class="list card" ng-repeat="offer in offers">
 
-            <div class="item">
+            <div class="item bar bar-header bar-positive">
                 <h2>{{offer.name}}</h2>
                 <p>by <a href="#">Pesho</a></p>
-                <p>{{offer.date | date: 'dd/MM/yyyy'}}</p>
+                <p>{{offer.date | date: longDate}}</p>
             </div>
 
             <div class="item item-body">

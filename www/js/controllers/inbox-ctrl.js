@@ -1,7 +1,8 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('InboxCtrl', function($rootScope, $scope, $ionicSwipeCardDelegate) {
+    .controller('InboxCtrl', function($rootScope, $scope, $ionicSwipeCardDelegate, User) {
+
         var offers = [{
             offerCreator: 'Ivan Ivanov',
             avatar: "img/img.jpg",

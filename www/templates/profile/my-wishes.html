@@ -4,7 +4,7 @@
             <a class="button button-balanced" ui-sref="app.new-wish">+Add New Wish</a>
         </div>
         <div class="list card" ng-repeat="wish in wishes">
-            <div class="item">
+            <div class="item bar bar-header bar-positive" >
                 <h2>{{wish.getName()}}</h2>
 
                 <p>{{wish.createdAt | date:long}}</p>

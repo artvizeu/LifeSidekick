@@ -7,11 +7,13 @@ lifeSidekickApp
 
         var query = new Parse.Query(Wish);
 
-        $scope.user.getWishes().forEach(function (wish) {
-            query.get(wish.id, {
-                success: function (wish) {
-                    $scope.wishes.push(wish);
-                }
-            })
-        });
+        if($scope.user.getWishes()){
+            $scope.user.getWishes().forEach(function (wish) {
+                query.get(wish.id, {
+                    success: function (wish) {
+                        $scope.wishes.push(wish);
+                    }
+                })
+            });
+        }
     });
