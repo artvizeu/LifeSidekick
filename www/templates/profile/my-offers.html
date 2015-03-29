@@ -7,7 +7,6 @@
 
             <div class="item bar bar-header bar-positive">
                 <h2>{{offer.get('name')}} - {{offer.get('price') | currency}}</h2>
-
                 <p>{{offer.createdAt | date: 'dd/MM/yyyy'}}</p>
             </div>
 
@@ -15,21 +14,19 @@
                 <p ng-click="test()">
                     {{offer.get('description')}}
                 </p>
-
                 <p>
-
                 <h3>Status: {{offer.get('status')}}</h3>
                 </p>
             </div>
 
-            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.get('status') != 'Done' ">
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="(offer.get('status') != 'done') && (offer.get('status') != 'pending') ">
                 <a class="tab-item" ui-sref="app.offer-send({offerId: offer.id})">
                     <!--<i class="icon ion-checkmark-round"></i>-->
                     Send Offer
                 </a>
             </div>
-            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.get('status') == 'Done' ">
-                <a class="tab-item" ui-sref="app.pay">
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.get('status') == 'done' ">
+                <a class="tab-item" href="#">
                     <!--<i class="icon ion-checkmark-round"></i>-->
                     Pay
                 </a>

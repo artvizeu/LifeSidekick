@@ -1,36 +1,20 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('OnWorkingOffersCtrl', function($rootScope, $scope) {
-        var offers =[];
+    .controller('OnWorkingOffersCtrl', function($rootScope, $scope, Offer) {
+        $scope.offers = [];
 
-        offers.push({
-            "name": "Write some Software",
-            "description":"- Add newsletter and wholesale modules\n- Remove some tables",
-            "status": "On working",
-            "date": new Date("March 28, 2015 11:13:00")
+        var query = new Parse.Query(Offer);
+
+        query.equalTo("acceptedUser", $rootScope.currentUser);
+        query.equalTo("status", "pending");
+
+        query.find({
+            success: function (offers) {
+                offers.forEach(function (offer) {
+                    offer.getOwner().fetch();
+                    $scope.offers.push(offer);
+                });
+            }
         });
-
-        offers.push({
-            "name": "Babysit",
-            "description":"Girls only",
-            "status": "On working",
-            "date": new Date("March 28, 2015 11:13:00")
-        });
-
-        offers.push({
-            "name": "Write some Software",
-            "description":"- Add newsletter and wholesale modules\n- Remove some tables",
-            "status": "On working",
-            "date": new Date("March 28, 2015 11:13:00")
-        });
-
-        offers.push({
-            "name": "Babysit",
-            "description":"Girls only",
-            "status": "On working",
-            "date": new Date("March 28, 2015 11:13:00")
-        });
-
-        $scope.offers = offers;
     });

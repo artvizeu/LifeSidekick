@@ -11,12 +11,10 @@ lifeSidekickApp
 
         query.find({
             success: function (invites) {
-                console.log(invites);
-
                 invites.forEach(function (invite) {
                     invite.getOffer().fetch({
                         success: function (offer) {
-                            offer.getOwner().fetch();
+                            offer.get("owner").fetch();
                             $scope.offers.push(offer);
                         }
                     });
@@ -25,10 +23,11 @@ lifeSidekickApp
         });
 
         $scope.acceptOffer = function (offer, index) {
-            offer.setAcceptedUser($rootScope.currentUser);
-            offer.setStatus("pending");
+            offer.set("acceptedUser", ($rootScope.currentUser));
+            offer.set("status", ("pending"));
             offer.save(null, {
-                success: function () {
+                success: function (offer) {
+                    console.log(offer);
                     var query = new Parse.Query(Invite);
 
                     query.equalTo("offer", offer);
@@ -46,7 +45,7 @@ lifeSidekickApp
             });
         };
 
-        $scope.decline=function(index){
+        $scope.decline=function (index) {
             $scope.offers.splice(index, 1);
         }
     });
