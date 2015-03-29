@@ -5,13 +5,21 @@ lifeSidekickApp
         $scope.user = $rootScope.currentUser;
         $scope.wishes = [];
 
-        var query = new Parse.Query(Wish);
-
-        query.equalTo("owner", $scope.user.id);
-        query.descending("createdAt");
-        query.find({
-            success: function (wishes) {
-                $scope.wishes = wishes;
-            }
+        $scope.user.getWishes().forEach(function (wish) {
+            wish.fetch({
+                success: function (wish) {
+                    $scope.wishes.push(wish);
+                }
+            });
         });
+
+        //var query = new Parse.Query(Wish);
+        //
+        //query.equalTo("owner", $scope.user.id);
+        //query.descending("createdAt");
+        //query.find({
+        //    success: function (wishes) {
+        //        $scope.wishes = wishes;
+        //    }
+        //});
     });

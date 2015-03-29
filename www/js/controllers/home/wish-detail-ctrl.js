@@ -37,12 +37,9 @@ lifeSidekickApp
             success: function (wish) {
                 $scope.wish = wish;
 
-                console.log(wish.getOwner());
-
                 var userQuery = new Parse.Query(User);
-                userQuery.get(wish.getOwner(), {
+                userQuery.get(wish.getOwner().id, {
                     success: function (owner) {
-                        console.log(owner.getUsername());
                         $scope.owner = owner;
                     }
                 })

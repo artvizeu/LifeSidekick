@@ -4,12 +4,16 @@ lifeSidekickApp
     .controller('WishesFeedCtrl', function ($scope, Wish) {
 
         var query = new Parse.Query(Wish);
+        $scope.wishes = [];
 
-                query.find({
-                    success: function (wishes) {
-                        $scope.wishes=wishes;
-                    }
+        query.find({
+            success: function (wishes) {
+                wishes.forEach(function (wish) {
+                    wish.getOwner().fetch();
+                    $scope.wishes.push(wish);
                 });
+            }
+        });
 
 
 //        $scope.wishes = [

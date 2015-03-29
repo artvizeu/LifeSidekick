@@ -1,7 +1,9 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('AppCtrl', function ($rootScope, $scope, $window, $ionicModal, $ionicSideMenuDelegate, popup, loading, modal, gravatar, User) {
+    .controller('AppCtrl', function ($rootScope, $scope, $window,
+                                     $ionicModal, $ionicSideMenuDelegate,
+                                     popup, loading, modal, gravatar, User) {
         // Form data for the login modal
         $scope.loginData = {};
         $scope.registerData = {};
@@ -49,9 +51,11 @@ lifeSidekickApp
             newUser.setUsername(userData.username);
             newUser.setPassword(userData.password);
             newUser.setEmail(userData.email);
-            newUser.setWishes([]);
-            newUser.setSkills("");
-            newUser.setFullName(userData.username);
+            newUser.set("wishes", []);
+            newUser.set("offers", []);
+            newUser.set("skills", "");
+            newUser.set("fullName", userData.username);
+            newUser.set("rating", 0);
 
             loading.show();
             newUser.signUp(null, {

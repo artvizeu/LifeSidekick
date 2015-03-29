@@ -1,0 +1,32 @@
+<ion-view view-title="New Offer">
+
+    <ion-nav-buttons side="primary">
+        <a class="button icon-left ion-chevron-left button-clear button-light"
+           ui-sref="app.profile.about.my-wishes"></a>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <form ng-submit="createNewOffer(newOfferData)">
+            <div class="list">
+                <!--add picture upload eventually-->
+                <label class="item item-input item-stacked-label">
+                    <input type="text" ng-model="newOfferData.name" placeholder="Name">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <input type="text" ng-model="newOfferData.description" placeholder="Description">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <input type="number" ng-model="newOfferData.price" placeholder="Price">
+                </label>
+
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Save</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+
+

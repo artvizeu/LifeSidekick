@@ -1,33 +1,39 @@
 <ion-view view-title="My Offers">
     <ion-content>
+        <div class="center">
+            <a class="button button-balanced" ui-sref="app.new-offer">Make New Offer</a>
+        </div>
         <div class="list card" ng-repeat="offer in offers">
 
             <div class="item bar bar-header bar-positive">
-                <h2>{{offer.name}}</h2>
-                <p>{{offer.date | date: 'dd/MM/yyyy'}}</p>
+                <h2>{{offer.get('name')}} - {{offer.get('price') | currency}}</h2>
+                <p>{{offer.createdAt | date: 'dd/MM/yyyy'}}</p>
             </div>
 
             <div class="item item-body">
                 <p ng-click="test()">
-                    {{offer.description}}
+                    {{offer.get('description')}}
                 </p>
                 <p>
-                <h3>Status: {{offer.status}}</h3>
+                <h3>Status: {{offer.get('status')}}</h3>
                 </p>
             </div>
 
-            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.status != 'Done' ">
-                <a class="tab-item" ui-sref="app.offer-send">
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.get('status') != 'done' ">
+                <a class="tab-item" ui-sref="app.offer-send({offerId: offer.id})">
                     <!--<i class="icon ion-checkmark-round"></i>-->
                     Send Offer
                 </a>
             </div>
-            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.status == 'Done' ">
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.get('status') == 'done' ">
                 <a class="tab-item" href="#">
                     <!--<i class="icon ion-checkmark-round"></i>-->
                     Pay
                 </a>
             </div>
+        </div>
+        <div style="height: 220px">
+
         </div>
     </ion-content>
 </ion-view>

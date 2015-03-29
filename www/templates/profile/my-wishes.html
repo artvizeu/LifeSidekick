@@ -5,14 +5,14 @@
         </div>
         <div class="list card" ng-repeat="wish in wishes">
             <div class="item bar bar-header bar-positive" >
-                <h2>{{wish.getName()}}</h2>
+                <h2>{{wish.get('name')}}</h2>
 
                 <p>{{wish.createdAt | date:long}}</p>
             </div>
 
             <div class="item item-body">
-                <p>{{ wish.getDescription() | limitTo:50 }}...</p>
-                <img class="full-image" ng-src="{{wish.getPhoto()}}" alt=""/>
+                <p>{{ wish.get('description') | limitTo:50 }}...</p>
+                <img class="full-image" ng-src="{{wish.get('photo')}}" alt=""/>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">

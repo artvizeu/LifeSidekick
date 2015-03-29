@@ -14,7 +14,7 @@
                     <input type="email" placeholder="{{user.getEmail()}}" ng-model="userData.email">
                 </label>
                 <label class="item item-input">
-                    <textarea placeholder="{{user.getSkills()}}" ng-model="userData.skills"></textarea>
+                    <textarea placeholder="{{user.getSkills() == '' ? 'Your skills' : user.getSkills()}}" ng-model="userData.skills"></textarea>
                 </label>
                 <label class="item item-input">
                     <input type="password" placeholder="New Password" ng-model="userData.password">

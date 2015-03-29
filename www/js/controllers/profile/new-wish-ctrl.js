@@ -2,14 +2,14 @@
 
 lifeSidekickApp
     .controller('NewWishCtrl', function ($rootScope, $scope, $state, Wish) {
-        $scope.newWishData = {};
+        $scope.newOfferData = {};
 
         $scope.createNewWish = function (newWishData) {
             var wish = new Wish();
             wish.setName(newWishData.name);
             wish.setDescription(newWishData.description);
             wish.setPrice(newWishData.price);
-            wish.setOwner($rootScope.currentUser.id);
+            wish.setOwner($rootScope.currentUser);
             wish.setReachedMoney(0);
             wish.save(null, {
                 success: function () {

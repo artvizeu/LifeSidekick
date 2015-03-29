@@ -41,6 +41,12 @@ lifeSidekickApp
             },
             setWishes: function (wishes) {
                 this.set("wishes", wishes);
+            },
+            getOffers: function () {
+                return this.get("offers");
+            },
+            setOffers: function (offers) {
+                this.set("offers", offers);
             }
         });
 
