@@ -19,16 +19,16 @@
                 </p>
             </div>
 
-            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="(offer.get('status') != 'done') && (offer.get('status') != 'pending') ">
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="(offer.get('status') == 'new')">
                 <a class="tab-item" ui-sref="app.offer-send({offerId: offer.id})">
                     <!--<i class="icon ion-checkmark-round"></i>-->
                     Send Offer
                 </a>
             </div>
-            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.get('status') == 'done' ">
-                <a class="tab-item" href="#">
+            <div class="item tabs tabs-secondary tabs-icon-left" ng-if="offer.get('status') == 'pending' ">
+                <a class="tab-item" ui-sref="app.pay({offerId: offer.id})">
                     <!--<i class="icon ion-checkmark-round"></i>-->
-                    Pay
+                    Done
                 </a>
             </div>
         </div>

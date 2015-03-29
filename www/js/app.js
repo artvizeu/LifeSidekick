@@ -175,7 +175,7 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                 }
             })
             .state('app.pay', {
-                url: "pay",
+                url: "/pay/:offerId",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/pay.html",

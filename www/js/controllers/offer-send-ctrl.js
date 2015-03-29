@@ -6,8 +6,6 @@ lifeSidekickApp
 
         var offerId = $stateParams.offerId;
 
-        console.log(offerId);
-
         $scope.sendOffer = function (user) {
 
             var query = new Parse.Query(Offer);

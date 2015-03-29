@@ -1,17 +1,23 @@
 lifeSidekickApp
-    .controller('PayCtrl', function ($scope) {
+    .controller('PayCtrl', function ($scope, $stateParams, $state, Offer) {
         $scope.reviewData = {};
 
-        $scope.doPay = function (reviewData) {
-            if (isEmpty(reviewData)) {
-                console.log('Empty review.');
-            } else {
-                // process review creation for user
-                console.log(reviewData);
-            }
-        };
+        var offerId = $stateParams.offerId;
 
-        function isEmpty(obj) {
-            return Object.keys(obj).length == 0;
-        }
+        $scope.doPay = function (reviewData) {
+            var query = new Parse.Query(Offer);
+
+            query.get(offerId, {
+                success: function (offer) {
+                    offer.set("comment", reviewData.comment);
+                    offer.set("rating", reviewData.rating);
+                    offer.set("status", "done");
+                    offer.save(null, {
+                        success: function () {
+                            $state.go('app.profile.about.my-offers');
+                        }
+                    });
+                }
+            });
+        };
     });
