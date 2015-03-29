@@ -17,6 +17,30 @@ lifeSidekickApp
             },
             setEmail: function (email) {
                 this.set("email", email);
+            },
+            getFullName: function () {
+                return this.get("fullName");
+            },
+            setFullName: function (fullName) {
+                this.set("fullName", fullName);
+            },
+            getRating: function () {
+                return this.get("rating");
+            },
+            setRating: function (rating) {
+                this.set("rating", rating);
+            },
+            getSkills: function () {
+                return this.get("skills");
+            },
+            setSkills: function (skills) {
+                this.set("skills", skills);
+            },
+            getWishes: function () {
+                return this.get("wishes");
+            },
+            setWishes: function (wishes) {
+                this.set("wishes", wishes);
             }
         });
 

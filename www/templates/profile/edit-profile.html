@@ -8,13 +8,13 @@
         <form ng-submit="doSave(userData)">
             <div class="list">
                 <label class="item item-input">
-                    <input type="text" placeholder="Full Name" ng-model="userData.fullname">
+                    <input type="text" placeholder="{{user.getFullName()}}" ng-model="userData.fullname">
                 </label>
                 <label class="item item-input">
-                    <input type="email" placeholder="Email" ng-model="userData.email">
+                    <input type="email" placeholder="{{user.getEmail()}}" ng-model="userData.email">
                 </label>
                 <label class="item item-input">
-                    <textarea placeholder="Skills: babysit, web programming, garden worker..."></textarea>
+                    <textarea placeholder="{{user.getSkills()}}" ng-model="userData.skills"></textarea>
                 </label>
                 <label class="item item-input">
                     <input type="password" placeholder="New Password" ng-model="userData.password">

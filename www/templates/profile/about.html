@@ -5,7 +5,7 @@
                 <img ng-src="{{getGravatarUrl()}}" alt=""/>
             </div>
             <div class="col col-75 center">
-                <div>Pesho</div>
+                <div>{{user.getFullName()}}</div>
                 <rating ng-model="rate" max="max"></rating>
                 <a class="button" ui-sref="app.edit-profile">Edit Profile</a>
             </div>
@@ -13,10 +13,10 @@
 
         <div class="row center">
             <div class="col">
-                <a class="button button-positive" ui-sref="app.profile.about.my-wishes">Wishes</a>
+                <a class="button button-block button-positive" ui-sref="app.profile.about.my-wishes">Wishes</a>
             </div>
             <div class="col">
-                <a class="button button-positive" ui-sref="app.profile.about.my-offers">Offers</a>
+                <a class="button button-block button-positive" ui-sref="app.profile.about.my-offers">Offers</a>
             </div>
         </div>
         <div>

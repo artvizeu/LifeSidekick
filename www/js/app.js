@@ -57,15 +57,6 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     }
                 }
             })
-            .state('app.home.new-wish', {
-                url: "/new-wish",
-                views: {
-                    'new-wish': {
-                        templateUrl: "templates/home/new-wish.html",
-                        controller: 'NewWishCtrl'
-                    }
-                }
-            })
             .state('app.wish-detail', {
                 url: "/wish-detail/:wishId/:statePath",
                 views: {
@@ -108,6 +99,15 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     'mainContent': {
                         templateUrl: "templates/profile/my-offers.html",
                         controller: 'MyOffersCtrl'
+                    }
+                }
+            })
+            .state('app.new-wish', {
+                url: "/new-wish",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/new-wish.html",
+                        controller: 'NewWishCtrl'
                     }
                 }
             })
