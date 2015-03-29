@@ -12,7 +12,7 @@
 
             <div class="item item-body">
                 <p>{{ wish.getDescription() | limitTo:50 }}...</p>
-                <img class="full-image" ng-src="http://suburbanfinance.com/wp-content/uploads/2013/04/streetinfo.jpg" alt=""/>
+                <img class="full-image" ng-src="{{wish.getPhoto()}}" alt=""/>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">

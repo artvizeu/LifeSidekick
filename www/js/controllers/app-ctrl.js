@@ -49,6 +49,9 @@ lifeSidekickApp
             newUser.setUsername(userData.username);
             newUser.setPassword(userData.password);
             newUser.setEmail(userData.email);
+            newUser.setWishes([]);
+            newUser.setSkills("");
+            newUser.setFullName(userData.username);
 
             loading.show();
             newUser.signUp(null, {

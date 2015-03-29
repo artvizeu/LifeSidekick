@@ -9,6 +9,8 @@ lifeSidekickApp
             wish.setName(newWishData.name);
             wish.setDescription(newWishData.description);
             wish.setPrice(newWishData.price);
+            wish.setOwner($rootScope.currentUser.id);
+            wish.setReachedMoney(0);
             wish.save(null, {
                 success: function () {
                     $rootScope.currentUser.getWishes().push(wish);

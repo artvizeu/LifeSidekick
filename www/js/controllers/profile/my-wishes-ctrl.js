@@ -7,11 +7,11 @@ lifeSidekickApp
 
         var query = new Parse.Query(Wish);
 
-        $scope.user.getWishes().forEach(function (wish) {
-            query.get(wish.id, {
-                success: function (wish) {
-                    $scope.wishes.push(wish);
-                }
-            })
+        query.equalTo("owner", $scope.user.id);
+        query.descending("createdAt");
+        query.find({
+            success: function (wishes) {
+                $scope.wishes = wishes;
+            }
         });
     });

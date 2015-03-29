@@ -28,6 +28,18 @@ lifeSidekickApp
             setPhoto: function (photo) {
                 this.set("photo", photo);
             },
+            getOwner: function () {
+                return this.get("owner");
+            },
+            setOwner: function (owner) {
+                this.set("owner", owner);
+            },
+            getReachedMoney: function () {
+                return this.get("reachedMoney");
+            },
+            setReachedMoney: function (reachedMoney) {
+                this.set("reachedMoney", reachedMoney);
+            },
             // Instance properties go in an initialize method
             initialize: function (attrs, options) {
 
