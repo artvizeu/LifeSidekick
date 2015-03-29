@@ -102,6 +102,15 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     }
                 }
             })
+            .state('app.offer-send', {
+                url: "/offer-send",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/offer-send.html",
+                        controller: 'OfferSendCtrl'
+                    }
+                }
+            })
             .state('app.new-wish', {
                 url: "/new-wish",
                 views: {
