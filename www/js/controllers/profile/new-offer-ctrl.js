@@ -11,6 +11,7 @@ lifeSidekickApp
             offer.setPrice(newOfferData.price);
             offer.setOwner($rootScope.currentUser);
             offer.setStatus("new");
+            offer.setInvitedUsers([]);
             offer.save(null, {
                 success: function (offer) {
                     $rootScope.currentUser.getOffers().push(offer);

@@ -46,6 +46,18 @@ lifeSidekickApp
             setStatus: function (status) {
                 this.set("status", status);
             },
+            getInvitedUsers: function () {
+                return this.get("invitedUsers");
+            },
+            setInvitedUsers: function (invitedUsers) {
+                this.set("invitedUsers", invitedUsers);
+            },
+            getAcceptedUser: function () {
+                return this.get("acceptedUser");
+            },
+            setAcceptedUser: function (acceptedUser) {
+                this.set("acceptedUser", acceptedUser);
+            },
             // Instance properties go in an initialize method
             initialize: function (attrs, options) {
 

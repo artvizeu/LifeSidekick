@@ -2,25 +2,19 @@
     <ion-content>
         <div class="list card" ng-repeat="offer in offers">
 
-            <div class="item item-avatar bar bar-header bar-positive">
-                <img src="{{offer.avatar}}">
-                <h2>{{offer.offerCreator}}</h2>
-                <p>{{offer.date | date:longDate}}</p>
+            <div class="item bar bar-header bar-positive">
+                <h2>{{offer.get("owner").get("username")}}</h2>
+                <p>{{offer.createdAt | date:longDate}}</p>
             </div>
 
             <div class="item item-body">
-                <h2>{{offer.name}}</h2>
-                <p>
-                    {{offer.description}}
-                </p>
-
-                <p>
-                <h3>Price: ${{offer.price}}</h3>
-                </p>
+                <h2>{{offer.get("name")}}</h2>
+                <p>{{offer.get("description")}}</p>
+                <h3>Price: ${{offer.get("price")}}</h3>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#" ng-click="goAway()">
+                <a class="tab-item" href="#" ng-click="acceptOffer(offer, $index)">
                     <i class="icon ion-checkmark-round"></i>
                     Accept
                 </a>

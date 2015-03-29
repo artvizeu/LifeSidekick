@@ -1,50 +1,51 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('InboxCtrl', function($rootScope, $scope, $ionicSwipeCardDelegate, User) {
+    .controller('InboxCtrl', function($rootScope, $scope, $state, Invite) {
 
-        var offers = [{
-            offerCreator: 'Ivan Ivanov',
-            avatar: "img/img.jpg",
-            name: 'Create some software',
-            description: "some cool app",
-            status: "New",
-            date: new Date("March 28, 2015 11:13:00"),
-            price: '3'
-        }, {
-            offerCreator: 'Ivan Ivanov',
-            name: 'Create some software',
-            avatar: "img/img.jpg",
-            description: "some cool app",
-            status: "New",
-            date: new Date("March 28, 2015 11:13:00"),
-            price: '4'
-        }, {
-            offerCreator: 'Ivan Ivanov',
-            name: 'Create some software',
-            avatar: "img/img.jpg",
-            description: "some cool app",
-            status: "New",
-            date: new Date("March 28, 2015 11:13:00"),
-            price: '5'
-        }, {
-            offerCreator: 'Ivan Ivanov',
-            name: 'Create some software',
-            avatar: "img/img.jpg",
-            description: "some cool app",
-            status: "New",
-            date: new Date("March 28, 2015 11:13:00"),
-            price: '6'
-        }, {
-            offerCreator: 'Ivan Ivanov',
-            name: 'Create some software',
-            avatar: "img/img.jpg",
-            description: "some cool app",
-            status: "New",
-            date: new Date("March 28, 2015 11:13:00"),
-            price: '7'
-        }];
-        $scope.offers=offers;
+        var query = new Parse.Query(Invite);
+
+        $scope.offers = [];
+
+        query.equalTo("invitedUser", $rootScope.currentUser);
+
+        query.find({
+            success: function (invites) {
+                console.log(invites);
+
+                invites.forEach(function (invite) {
+                    invite.getOffer().fetch({
+                        success: function (offer) {
+                            offer.getOwner().fetch();
+                            $scope.offers.push(offer);
+                        }
+                    });
+                });
+            }
+        });
+
+        $scope.acceptOffer = function (offer, index) {
+            offer.setAcceptedUser($rootScope.currentUser);
+            offer.setStatus("pending");
+            offer.save(null, {
+                success: function () {
+                    var query = new Parse.Query(Invite);
+
+                    query.equalTo("offer", offer);
+
+                    query.find({
+                        success: function (invites) {
+                            invites.forEach(function (invite) {
+                                invite.destroy();
+                            });
+
+                            $scope.offers.splice(index, 1);
+                        }
+                    });
+                }
+            });
+        };
+
         $scope.decline=function(index){
             $scope.offers.splice(index, 1);
         }
