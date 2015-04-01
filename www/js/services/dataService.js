@@ -1,12 +1,24 @@
 "use strict";
 
 lifeSidekickApp
-    .factory("dataService", function ($rootScope, Offer, Wish) {
+    .factory("dataService", function ($rootScope, Offer, Wish, Invite) {
 
         var registerRefreshEvent = function (eventName, callback) {
             $rootScope.$on(eventName, function() {
                 callback();
             });
+        };
+
+        // User data
+        var findAllUsers = function () {
+            //var myLocation = $rootScope.currentUser.get("location");
+
+            var query = new Parse.Query(Parse.User);
+            //query.near("location", myLocation);
+            //query.descending("location");
+            query.notEqualTo('username', $rootScope.currentUser.get("username"));
+
+            return query.find();
         };
 
         // Offer data
@@ -47,6 +59,12 @@ lifeSidekickApp
             return query.find();
         };
 
+        var findOfferById = function (offerId) {
+            var query = baseOfferQuery();
+
+            return query.get(offerId);
+        };
+
         var findLastOffers = function () {
             var query = baseOfferQuery();
 
@@ -81,14 +99,50 @@ lifeSidekickApp
             return query.find();
         };
 
+        //Invite data
+        var baseInviteQuery = function () {
+            var query = new Parse.Query(Invite);
+            query.include("offer");
+            query.include("offer.owner");
+            query.include("invitedUser");
+            query.descending("createdAt");
+
+            return query;
+        };
+
+        var findInvitesByInvitedUser = function (invitedUser) {
+            var query = baseInviteQuery();
+
+            query.equalTo("invitedUser", invitedUser);
+
+            return query.find();
+        };
+
+        var findInvitesByOffer = function (offer) {
+            var query = baseInviteQuery();
+
+            query.equalTo("offer", offer);
+
+            return query.find();
+        };
+
+
         return {
             registerRefreshEvent: registerRefreshEvent,
+
+            findAllUsers: findAllUsers,
+
+            findOfferById: findOfferById,
             findLastOffers: findLastOffers,
             findDoneOffersByAcceptedUser: findDoneOffersByAcceptedUser,
             findPendingOffersByAcceptedUser: findPendingOffersByAcceptedUser,
             findOffersByUser: findOffersByUser,
+
             findLastWishes: findLastWishes,
             findWishById: findWishById,
-            findWishesByUser: findWishesByUser
+            findWishesByUser: findWishesByUser,
+
+            findInvitesByInvitedUser: findInvitesByInvitedUser,
+            findInvitesByOffer: findInvitesByOffer
         }
     });

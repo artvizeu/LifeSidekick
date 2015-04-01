@@ -1,20 +1,19 @@
 <ion-view view-title="Inbox">
     <ion-content>
-        <div class="list card" ng-repeat="offer in offers">
+        <div class="list card" ng-repeat="invite in invites">
 
             <div class="item bar bar-header bar-positive">
-                <h2>{{offer.get("owner").get("username")}}</h2>
-                <p>{{offer.createdAt | date:longDate}}</p>
+                <h2>{{invite.get("offer").get("name")}} by {{invite.get("offer").get("owner").get("username")}}</h2>
+                <p>{{invite.get("offer").createdAt | date:longDate}}</p>
             </div>
 
             <div class="item item-body">
-                <h2>{{offer.get("name")}}</h2>
-                <p>{{offer.get("description")}}</p>
-                <h3>Price: ${{offer.get("price")}}</h3>
+                <p>{{invite.get("offer").get("description")}}</p>
+                <h3>Price: ${{invite.get("offer").get("price")}}</h3>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#" ng-click="acceptOffer(offer, $index)">
+                <a class="tab-item" href="#" ng-click="acceptOffer(invite, $index)">
                     <i class="icon ion-checkmark-round"></i>
                     Accept
                 </a>

@@ -1,50 +1,40 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('InboxCtrl', function($rootScope, $scope, $state, Invite) {
-        var query = new Parse.Query(Invite);
-
+    .controller('InboxCtrl', function($rootScope, $scope, $state, dataService) {
+        $scope.invites = [];
         $scope.offers = [];
 
-        query.equalTo("invitedUser", $rootScope.currentUser);
+        dataService.findInvitesByInvitedUser($rootScope.currentUser)
+            .then(function (invites) {
+                $scope.invites = invites;
+            }, function (error) {
+                console.log(error);
+            });
 
-        query.find({
-            success: function (invites) {
-                invites.forEach(function (invite) {
-                    invite.getOffer().fetch({
-                        success: function (offer) {
-                            offer.get("owner").fetch();
-                            $scope.offers.push(offer);
-                        }
-                    });
-                });
-            }
-        });
-
-        $scope.acceptOffer = function (offer, index) {
+        $scope.acceptOffer = function (invite, index) {
+            var offer = invite.get("offer");
             offer.set("acceptedUser", ($rootScope.currentUser));
             offer.set("status", ("pending"));
-            offer.save(null, {
-                success: function (offer) {
-                    console.log(offer);
-                    var query = new Parse.Query(Invite);
-
-                    query.equalTo("offer", offer);
-
-                    query.find({
-                        success: function (invites) {
-                            invites.forEach(function (invite) {
+            offer.save()
+                .then(function (offer) {
+                    dataService.findInvitesByOffer(offer)
+                        .then(function (invites) {
+                            invites.forEach(function (invite) {                                                                                                                                                                                                                                                                               
                                 invite.destroy();
                             });
+                        });
 
-                            $scope.offers.splice(index, 1);
-                        }
-                    });
-                }
-            });
+                    $scope.invites.splice(index, 1);
+                    $state.go($state.current, {}, {reload: true});
+                }, function (error) {
+                    console.log(error);
+                });
         };
 
-        $scope.decline=function (index) {
-            $scope.offers.splice(index, 1);
+        $scope.decline = function (index) {
+            $scope.invites[index].destroy();
+            $scope.invites.splice(index, 1);
+            $state.go($state.current, {}, {reload: true});
         }
     });

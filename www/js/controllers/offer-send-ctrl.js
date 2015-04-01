@@ -1,39 +1,38 @@
 lifeSidekickApp
-    .controller('OfferSendCtrl', function ($scope, $state, $stateParams, modal, loading, popup, User, Offer, Invite) {
+    .controller('OfferSendCtrl', function ($scope, $rootScope, $state, $stateParams, loading, Invite, dataService) {
         $scope.users = [];
-
-        $scope.offer = {};
-
-        var offerId = $stateParams.offerId;
+        $scope.invite = {};
 
         $scope.sendOffer = function (user) {
-
-            var query = new Parse.Query(Offer);
-
-            query.get(offerId, {
-                success: function (offer) {
+            dataService.findOfferById($stateParams.offerId)
+                .then(function (offer) {
                     var invite = new Invite();
-                    invite.setInvitedUser(user);
-                    invite.setOffer(offer);
-                    invite.save(null, {
-                        success: function () {
-                            $state.go('app.profile.about.my-offers');
-                        }
-                    });
-                }
-            });
-
-            console.log('Sending offer to - ' + user.getUsername());
+                        invite.setInvitedUser(user);
+                        invite.setOffer(offer);
+                        invite.save()
+                            .then(function (invite) {
+                                $state.go('app.profile.about.my-offers');
+                            }, function (error) {
+                                console.log(error);
+                            });
+                }, function (error) {
+                    console.log(error);
+                });
         };
 
-        var query = new Parse.Query(User);
-        query.notEqualTo('username', User.current().getUsername());
-        query.find({
-            success: function (users) {
-                $scope.users = users;
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
+        fetchList();
+
+        function fetchList() {
+            loading.show();
+
+            dataService.findAllUsers()
+                .then(function (users) {
+                    loading.hide();
+                    $scope.users = users;
+
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
+                })
+        }
     });
