@@ -16,21 +16,21 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item class="item-remove-animate item-avatar item-icon-right"
+                <ion-item menu-close class="item-remove-animate item-avatar item-icon-right"
                         ui-sref="app.profile.about.my-wishes">
                     <img ng-src="{{getGravatarUrl()}}" alt=""/>
                     <p>Profile</p>
                 </ion-item>
-                <ion-item ui-sref="app.home.wishes-feed">
+                <ion-item menu-close ui-sref="app.home.wishes-feed">
                     <p>Home</p>
                 </ion-item>
-                <ion-item ui-sref="app.on-working-offers">
+                <ion-item menu-close ui-sref="app.on-working-offers">
                     <p>On working</p>
                 </ion-item>
-                <ion-item ui-sref="app.inbox">
+                <ion-item menu-close ui-sref="app.inbox">
                     <p>Inbox</p>
                 </ion-item>
-                <ion-item ng-click="logout()">
+                <ion-item menu-close ng-click="logout()">
                     <p>Logout</p>
                 </ion-item>
             </ion-list>
