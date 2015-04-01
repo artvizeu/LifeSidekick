@@ -1,5 +1,5 @@
 lifeSidekickApp
-    .controller('OffersFeedCtrl', function ($scope, offers, popup, loading, dataService) {
+    .controller('OffersFeedCtrl', function ($scope, popup, loading, dataService) {
         $scope.offers = [];
 
         dataService.registerRefreshEvent('offersFeed:listChanged', fetchList);
