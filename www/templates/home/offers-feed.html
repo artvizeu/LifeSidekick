@@ -2,11 +2,11 @@
     <ion-content>
         <div class="list card" ng-repeat="offer in offers">
             <div class="item bar bar-header card-header">
-                <h2>{{ offer.getName() }} <i>by</i> {{ offer.getOwner().get('username')}} </h2>
+                <h2><b>{{ offer.getName() }}</b> by {{ offer.getOwner().get('username')}} </h2>
             </div>
 
-            <div class="item item-body">
-                <p>{{ offer.getDescription() | limitTo:50 }}...</p>
+            <div class="item item-body center">
+                <p>"{{ offer.getDescription() }}"</p>
                 <p>{{ offer.getPrice() | currency }}</p>
                 <p>{{offer.createdAt | date: longDate}}</p>
             </div>

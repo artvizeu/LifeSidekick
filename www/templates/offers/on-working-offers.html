@@ -3,17 +3,17 @@
         <div class="list card" ng-repeat="offer in offers">
 
             <div class="item bar bar-header card-header">
-                <h2>{{offer.get("name")}} by {{offer.get("owner").get("username")}}</h2>
+                <h2><b>{{offer.get("name")}}</b> by {{offer.get("owner").get("username")}}</h2>
                 <p>by <a href="#">Pesho</a></p>
                 <p>{{offer.createdAt | date: longDate}}</p>
             </div>
 
-            <div class="item item-body">
+            <div class="item item-body center">
                 <p ng-click="test()">
-                    {{offer.get("description")}}
+                    "{{offer.get("description")}}"
                 </p>
                 <p>
-                <h3>Status: {{offer.get("status")}}</h3>
+                <h3>Status: {{offer.get("status") | uppercase}}</h3>
                 </p>
             </div>
         </div>

@@ -6,17 +6,12 @@
 
     <ion-content>
         <div class="list card">
-            <div class="item item-body item-stable center">
-                <h2>{{ owner.getUsername() }}</h2>
+            <div class="item bar bar-header card-header">
+                <h2><b>{{ wish.getName() }}</b> by {{ owner.getUsername() }}</h2>
             </div>
 
-            <div class="item item-body">
-                <h3>
-                    {{ wish.getName() }}
-                </h3>
-
-                <p>{{ wish.getDescription() }}</p>
-
+            <div class="item item-body center">
+                <p>"{{ wish.getDescription() }}"</p>
                 <p>{{ wish.getReachedMoney() | currency }} / {{wish.getPrice() | currency}}</p>
                 <progress max="100" value="{{progress}}"></progress>
             </div>
