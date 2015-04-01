@@ -12,19 +12,21 @@ lifeSidekickApp
             offer.setOwner($rootScope.currentUser);
             offer.setStatus("new");
             offer.setInvitedUsers([]);
-            offer.save(null, {
-                success: function (offer) {
+
+            offer.save()
+                .then(function (offer) {
                     $rootScope.currentUser.getOffers().push(offer);
                     $rootScope.currentUser.setOffers($rootScope.currentUser.getOffers());
-                    $rootScope.currentUser.save(null, {
-                        success: function () {
+                    $rootScope.currentUser.save()
+                        .then(function (user) {
+                            $scope.$emit('myOffers:listChanged');
+                            $scope.$emit('offersFeed:listChanged');
                             $state.go("app.profile.about.my-offers");
-                        }
-                    });
-                },
-                error: function () {
-
-                }
-            });
+                        }, function (error) {
+                            console.log(error);
+                        });
+                }, function (error) {
+                    console.log(error);
+                });
         }
     });

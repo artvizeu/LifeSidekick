@@ -1,21 +1,12 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('HistoryCtrl', function($rootScope, $scope, Offer) {
+    .controller('HistoryCtrl', function($rootScope, $scope, dataService) {
         $scope.offers = [];
         $scope.max = 5;
 
-        var query = new Parse.Query(Offer);
-        query.equalTo("acceptedUser", $rootScope.currentUser);
-        query.equalTo("status", "done");
-        query.find({
-            success: function (offers) {
+        dataService.findDoneOffersByAcceptedUser($rootScope.currentUser)
+            .then(function (offers) {
                 $scope.offers = offers;
-
-                offers.forEach(function(offer) {
-                    offer.getOwner().fetch();
-                })
-            }
-        });
-
+            });
     });

@@ -22,13 +22,11 @@ lifeSidekickApp
                 $scope.user.setSkills(userData.skills);
             }
 
-            $scope.user.save(null, {
-                success: function () {
+            $scope.user.save()
+                .then(function (user) {
                     $state.go("app.profile.about.my-wishes");
-                },
-                error: function () {
+                }, function (error) {
 
-                }
-            });
+                });
         }
     });

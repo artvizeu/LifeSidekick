@@ -2,7 +2,6 @@
 
 lifeSidekickApp
     .controller('InboxCtrl', function($rootScope, $scope, $state, Invite) {
-
         var query = new Parse.Query(Invite);
 
         $scope.offers = [];

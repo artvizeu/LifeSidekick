@@ -48,9 +48,9 @@ lifeSidekickApp
         $scope.doRegister = function (userData) {
             var newUser = new User();
 
-            newUser.setUsername(userData.username);
-            newUser.setPassword(userData.password);
-            newUser.setEmail(userData.email);
+            newUser.set("username", userData.username);
+            newUser.set("password", userData.password);
+            newUser.set("email", userData.email);
             newUser.set("wishes", []);
             newUser.set("offers", []);
             newUser.set("skills", "");

@@ -1,20 +1,21 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('OnWorkingOffersCtrl', function($rootScope, $scope, Offer) {
+    .controller('OnWorkingOffersCtrl', function($rootScope, $scope, loading, dataService) {
         $scope.offers = [];
 
-        var query = new Parse.Query(Offer);
+        fetchList();
 
-        query.equalTo("acceptedUser", $rootScope.currentUser);
-        query.equalTo("status", "pending");
+        function fetchList() {
+            loading.show();
 
-        query.find({
-            success: function (offers) {
-                offers.forEach(function (offer) {
-                    offer.getOwner().fetch();
-                    $scope.offers.push(offer);
+            dataService.findPendingOffersByAcceptedUser($rootScope.currentUser)
+                .then(function (offers) {
+                    loading.hide();
+                    $scope.offers = offers;
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
                 });
-            }
-        });
+        }
     });

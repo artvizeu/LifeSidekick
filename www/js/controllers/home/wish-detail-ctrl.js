@@ -1,54 +1,10 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('WishDetailCtrl', function ($scope, $state, $stateParams, Wish, User) {
-        $scope.wishes = [
-            {
-                username: "pesho",
-                name: "first",
-                description: "simple test wish",
-                workedMoney: 3,
-                price: 12,
-                id: 0
-            },
-            {
-                username: "petran",
-                name: "second",
-                description: "simple test wish",
-                workedMoney: 1500,
-                price: 1555,
-                id: 1
-            },
-            {
-                username: "gosho",
-                name: "third",
-                description: "sihple test wish",
-                workedMoney: 13,
-                price: 50,
-                id: 2
-            }
-        ];
-
+    .controller('WishDetailCtrl', function ($scope, $state, $stateParams, loading, dataService) {
         $scope.wish = {};
         $scope.owner = {};
-
-        var query = new Parse.Query(Wish);
-        query.get($stateParams.wishId, {
-            success: function (wish) {
-                $scope.wish = wish;
-
-                var userQuery = new Parse.Query(User);
-                userQuery.get(wish.getOwner().id, {
-                    success: function (owner) {
-                        $scope.owner = owner;
-                    }
-                })
-            }
-        });
-
-        $scope.calculateProgress = function (wish) {
-            return (wish.getReachedMoney() / wish.getPrice()) * 100;
-        };
+        $scope.progress = 0;
 
         $scope.navigateBack = function () {
             if ($stateParams.statePath == "my-wishes") {
@@ -57,4 +13,20 @@ lifeSidekickApp
                 $state.go("app.home.wishes-feed");
             }
         };
+
+        fetchData();
+
+        function fetchData() {
+            loading.show();
+            dataService.findWishById($stateParams.wishId)
+                .then(function (wish) {
+                    loading.hide();
+                    $scope.wish = wish;
+                    $scope.owner = wish.get("owner");
+                    $scope.progress = (wish.get("reachedMoney") / wish.get("price")) * 100;
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
+                });
+        }
     });

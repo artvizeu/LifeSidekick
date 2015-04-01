@@ -18,7 +18,7 @@
                 <p>{{ wish.getDescription() }}</p>
 
                 <p>{{ wish.getReachedMoney() | currency }} / {{wish.getPrice() | currency}}</p>
-                <progress max="100" value="{{calculateProgress(wish)}}"></progress>
+                <progress max="100" value="{{progress}}"></progress>
             </div>
         </div>
     </ion-content>

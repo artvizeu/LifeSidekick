@@ -1,19 +1,24 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('MyOffersCtrl', function($rootScope, $scope, $state) {
+    .controller('MyOffersCtrl', function($rootScope, $scope, $state, dataService, loading) {
         $scope.user = $rootScope.currentUser;
         $scope.offers = [];
 
-        $scope.user.get("offers").forEach(function (offer) {
-            offer.fetch({
-                success: function (offer) {
-                    $scope.offers.push(offer);
-                }
-            });
-        });
+        dataService.registerRefreshEvent('myOffers:listChanged', fetchList);
 
-        $scope.newOffer = function () {
-            $state.go('app.offers.new-offer');
-        };
+        fetchList();
+
+        function fetchList() {
+            loading.show();
+
+            dataService.findOffersByUser($scope.user)
+                .then(function (offers) {
+                    loading.hide();
+                    $scope.offers = offers;
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
+                });
+        }
     });

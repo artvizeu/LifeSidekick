@@ -3,7 +3,7 @@
         <div class="list card" ng-repeat="offer in offers">
 
             <div class="item bar bar-header bar-positive">
-                <h2>{{offer.get("name")}}</h2>
+                <h2>{{offer.get("name")}} by {{offer.get("owner").get("username")}}</h2>
                 <p>by <a href="#">Pesho</a></p>
                 <p>{{offer.createdAt | date: longDate}}</p>
             </div>

@@ -1,19 +1,23 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('WishesFeedCtrl', function ($scope, Wish) {
+    .controller('WishesFeedCtrl', function ($rootScope, $scope, dataService, loading) {
         $scope.wishes = [];
 
-        var query = new Parse.Query(Wish);
+        dataService.registerRefreshEvent('wishesFeed:listChanged', fetchList);
 
-        query.descending("createdAt");
+        fetchList();
 
-        query.find({
-            success: function (wishes) {
-                wishes.forEach(function (wish) {
-                    wish.getOwner().fetch();
-                    $scope.wishes.push(wish);
+        function fetchList() {
+            loading.show();
+
+            dataService.findLastWishes()
+                .then(function (wishes) {
+                    loading.hide();
+                    $scope.wishes = wishes;
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
                 });
-            }
-        });
+        }
     });

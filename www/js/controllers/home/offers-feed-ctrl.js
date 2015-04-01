@@ -1,22 +1,27 @@
 lifeSidekickApp
-    .controller('OffersFeedCtrl', function ($scope, offers, popup, Offer) {
+    .controller('OffersFeedCtrl', function ($scope, offers, popup, loading, dataService) {
         $scope.offers = [];
 
-        var query = new Parse.Query(Offer);
-
-        query.descending("createdAt");
-        query.find({
-            success: function (offers) {
-                offers.forEach(function (offer) {
-                    offer.getOwner().fetch();
-                    $scope.offers.push(offer);
-                });
-            }
-        });
+        dataService.registerRefreshEvent('offersFeed:listChanged', fetchList);
 
         $scope.onApply = function () {
             popup.confirmSimple(function () {
                 console.log('To do job apply.');
             });
+        };
+
+        fetchList();
+
+        function fetchList() {
+            loading.show();
+
+            dataService.findLastOffers()
+                .then(function (offers) {
+                    loading.hide();
+                    $scope.offers = offers;
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
+                });
         }
     });

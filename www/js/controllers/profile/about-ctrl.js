@@ -1,19 +1,15 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('AboutCtrl', function($rootScope, $scope, Offer) {
+    .controller('AboutCtrl', function($rootScope, $scope, dataService) {
 
         $scope.user = $rootScope.currentUser;
-
-        // set the rate and max variables
-
         $scope.max = 5;
+        $scope.rate = 0;
+        $scope.offers = [];
 
-        var query = new Parse.Query(Offer);
-        query.equalTo("acceptedUser", $rootScope.currentUser);
-        query.equalTo("status", "done");
-        query.find({
-            success: function (offers) {
+        dataService.findDoneOffersByAcceptedUser($scope.user)
+            .then(function (offers) {
                 $scope.offers = offers;
                 var sum = 0;
                 offers.forEach(function(offer) {
@@ -21,6 +17,5 @@ lifeSidekickApp
                 });
 
                 $scope.rate = sum / offers.length;
-            }
-        });
+            });
     });

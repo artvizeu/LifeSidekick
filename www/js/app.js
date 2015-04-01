@@ -1,10 +1,8 @@
 "use strict";
 
-var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic.contrib.ui.cards'])
+var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic.contrib.ui.cards', 'angular-cache'])
 
-    .run(function ($ionicPlatform, config) {
-        Parse.initialize(config.APP_ID, config.JAVASCRIPT_ID);
-
+    .run(function ($ionicPlatform, CacheFactory, config) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -16,6 +14,8 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                 StatusBar.styleDefault();
             }
         });
+
+        Parse.initialize(config.APP_ID, config.JAVASCRIPT_ID);
     })
 
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
