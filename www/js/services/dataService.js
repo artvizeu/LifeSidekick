@@ -67,6 +67,7 @@ lifeSidekickApp
 
         var findLastOffers = function () {
             var query = baseOfferQuery();
+            query.equalTo("private", false);
 
             return query.find();
         };

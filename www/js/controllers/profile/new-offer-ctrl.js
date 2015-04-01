@@ -9,6 +9,7 @@ lifeSidekickApp
             offer.setName(newOfferData.name);
             offer.setDescription(newOfferData.description);
             offer.setPrice(newOfferData.price);
+            offer.set("private", newOfferData.private);
             offer.setOwner($rootScope.currentUser);
             offer.setStatus("new");
             offer.setInvitedUsers([]);

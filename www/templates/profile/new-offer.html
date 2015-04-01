@@ -21,6 +21,16 @@
                     <input type="number" ng-model="newOfferData.price" placeholder="Price">
                 </label>
 
+                <div class="item item-toggle">
+                    Set To Private
+                    <label class="toggle toggle-balanced">
+                        <input type="checkbox" ng-checked="false" ng-model="newOfferData.private">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+
                 <label class="item">
                     <button class="button button-block button-positive" type="submit">Save</button>
                 </label>
