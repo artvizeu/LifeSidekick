@@ -147,15 +147,6 @@ var lifeSidekickApp = angular.module('starter', ['ionic', 'ionic.rating', 'ionic
                     }
                 }
             })
-            .state('app.offers', {
-                url: "/offers",
-                abstract: true,
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/offers/offers.html"
-                    }
-                }
-            })
             .state('app.on-working-offers', {
                 url: "/on-working-offers",
                 views: {
