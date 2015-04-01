@@ -1,7 +1,7 @@
-<ion-view view-title="Wishes Feed">
+<ion-view view-title="Wishes Feed" class="bg-color">
     <ion-content>
         <div class="list card" ng-repeat="wish in wishes">
-            <div class="item bar bar-header bar-positive" >
+            <div class="item bar bar-header card-header" >
                 <h2>{{wish.getName()}} by {{wish.get("owner").get("username")}}</h2>
 
             </div>

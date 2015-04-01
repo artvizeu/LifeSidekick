@@ -1,8 +1,8 @@
-<ion-view view-title="Offers Feed">
+<ion-view view-title="Offers Feed" class="bg-color">
     <ion-content>
         <div class="list card" ng-repeat="offer in offers">
-            <div class="item bar bar-header bar-positive">
-                <h2>{{ offer.getName() }} by {{ offer.getOwner().get('username')}} </h2>
+            <div class="item bar bar-header card-header">
+                <h2>{{ offer.getName() }} <i>by</i> {{ offer.getOwner().get('username')}} </h2>
             </div>
 
             <div class="item item-body">

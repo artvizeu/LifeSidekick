@@ -15,6 +15,9 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$blue300: #42a5f5;
+$bluebg: #e3f2fd;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
@@ -37,11 +40,23 @@ a {
   color: $positive;
 }
 
+h2 {
+  color: #eeeeee;
+}
+
+.bg-color {
+  background-color: $bluebg;
+}
+
 .center {
   text-align: center;
 }
 
 .scroll {
   height: 100%;
+}
+
+.card-header {
+  background-color: $blue300;
 }
 

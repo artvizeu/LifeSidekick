@@ -1,11 +1,11 @@
-<ion-view view-title="My Offers">
+<ion-view view-title="My Offers" class="bg-color">
     <ion-content>
         <div class="center">
             <a class="button button-balanced" ui-sref="app.new-offer">Make New Offer</a>
         </div>
         <div class="list card" ng-repeat="offer in offers">
 
-            <div class="item bar bar-header bar-positive">
+            <div class="item bar bar-header card-header">
                 <h2>{{offer.get('name')}} - {{offer.get('price') | currency}}</h2>
                 <p>{{offer.createdAt | date: 'dd/MM/yyyy'}}</p>
             </div>

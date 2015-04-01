@@ -7615,8 +7615,17 @@ ul.rating li i {
 a {
   color: #387ef5; }
 
+h2 {
+  color: #eeeeee; }
+
+.bg-color {
+  background-color: #e3f2fd; }
+
 .center {
   text-align: center; }
 
 .scroll {
   height: 100%; }
+
+.card-header {
+  background-color: #42a5f5; }

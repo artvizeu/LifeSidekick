@@ -1,4 +1,4 @@
-<ion-view view-title="New Offer">
+<ion-view view-title="New Offer" class="bg-color">
 
     <ion-nav-buttons side="primary">
         <a class="button icon-left ion-chevron-left button-clear button-light"
@@ -9,15 +9,15 @@
         <form ng-submit="createNewOffer(newOfferData)">
             <div class="list">
                 <!--add picture upload eventually-->
-                <label class="item item-input item-stacked-label">
+                <label class="item item-input">
                     <input type="text" ng-model="newOfferData.name" placeholder="Name">
                 </label>
 
-                <label class="item item-input item-stacked-label">
+                <label class="item item-input">
                     <input type="text" ng-model="newOfferData.description" placeholder="Description">
                 </label>
 
-                <label class="item item-input item-stacked-label">
+                <label class="item item-input">
                     <input type="number" ng-model="newOfferData.price" placeholder="Price">
                 </label>
 

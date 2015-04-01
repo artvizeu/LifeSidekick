@@ -1,10 +1,10 @@
-<ion-view view-title="My Wishes">
+<ion-view view-title="My Wishes" class="bg-color">
     <ion-content>
         <div class="center">
             <a class="button button-balanced" ui-sref="app.new-wish">+Add New Wish</a>
         </div>
         <div class="list card" ng-repeat="wish in wishes">
-            <div class="item bar bar-header bar-positive" >
+            <div class="item bar bar-header card-header" >
                 <h2>{{wish.get('name')}}</h2>
 
                 <p>{{wish.createdAt | date:long}}</p>
