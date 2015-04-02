@@ -6,7 +6,7 @@
 
     <ion-content>
         <ion-item ng-repeat="user in users">
-            <div class="item">{{ user.getUsername() }}</div>
+            <div class="item"><b>{{ user.getUsername() }}</b> - {{ user.get('location') }} miles from here</div>
             <label class="item">
                 <button class="button button-block button-positive" ng-click=sendOffer(user)> Send to user</button>
             </label>

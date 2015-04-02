@@ -4,6 +4,8 @@ lifeSidekickApp
     .controller('OnWorkingOffersCtrl', function($rootScope, $scope, loading, dataService) {
         $scope.offers = [];
 
+        dataService.registerRefreshEvent('onWorkingOffers:listUpdated');
+
         fetchList();
 
         function fetchList() {

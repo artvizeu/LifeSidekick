@@ -1,23 +1,27 @@
 lifeSidekickApp
-    .controller('PayCtrl', function ($scope, $stateParams, $state, Offer) {
+    .controller('PayCtrl', function ($scope, $stateParams, $state, Offer, dataService) {
         $scope.reviewData = {};
+        $scope.offer = {};
 
         var offerId = $stateParams.offerId;
 
-        $scope.doPay = function (reviewData) {
-            var query = new Parse.Query(Offer);
-
-            query.get(offerId, {
-                success: function (offer) {
-                    offer.set("comment", reviewData.comment);
-                    offer.set("rating", reviewData.rating);
-                    offer.set("status", "done");
-                    offer.save(null, {
-                        success: function () {
-                            $state.go('app.profile.about.my-offers');
-                        }
-                    });
-                }
+        dataService.findOfferById(offerId)
+            .then(function (offer) {
+                $scope.offer = offer;
+            }, function (error) {
+                console.log(error);
             });
+
+        $scope.doPay = function (reviewData) {
+            $scope.offer.set("comment", reviewData.comment);
+            $scope.offer.set("rating", reviewData.rating);
+            $scope.offer.set("status", "done");
+
+            $scope.offer.save()
+                .then(function (offer) {
+                    $state.go('app.profile.about.my-offers');
+                }, function (error) {
+                    console.log(error);
+                });
         };
     });

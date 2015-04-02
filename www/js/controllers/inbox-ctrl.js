@@ -1,16 +1,9 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('InboxCtrl', function($rootScope, $scope, $state, dataService) {
+    .controller('InboxCtrl', function($rootScope, $scope, $state, dataService, loading) {
         $scope.invites = [];
         $scope.offers = [];
-
-        dataService.findInvitesByInvitedUser($rootScope.currentUser)
-            .then(function (invites) {
-                $scope.invites = invites;
-            }, function (error) {
-                console.log(error);
-            });
 
         $scope.acceptOffer = function (invite, index) {
             var offer = invite.get("offer");
@@ -25,6 +18,8 @@ lifeSidekickApp
                             });
                         });
 
+                    $scope.$emit('onWorkingOffers:listUpdated');
+
                     $scope.invites.splice(index, 1);
                     $state.go($state.current, {}, {reload: true});
                 }, function (error) {
@@ -36,5 +31,20 @@ lifeSidekickApp
             $scope.invites[index].destroy();
             $scope.invites.splice(index, 1);
             $state.go($state.current, {}, {reload: true});
+        };
+
+        fetchList();
+
+        function fetchList() {
+            loading.show();
+
+            dataService.findInvitesByInvitedUser($rootScope.currentUser)
+                .then(function (invites) {
+                    loading.hide();
+                    $scope.invites = invites;
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
+                });
         }
     });

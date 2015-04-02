@@ -4,19 +4,14 @@
             <a class="button button-balanced" ui-sref="app.new-offer">Make New Offer</a>
         </div>
         <div class="list card" ng-repeat="offer in offers">
-
             <div class="item bar bar-header card-header">
-                <h2>{{offer.get('name')}} - {{offer.get('price') | currency}}</h2>
-                <p>{{offer.createdAt | date: 'dd/MM/yyyy'}}</p>
+                <h2><b>{{offer.get('name')}}</b> - {{offer.get('price') | currency}}</h2>
             </div>
 
-            <div class="item item-body">
-                <p ng-click="test()">
-                    {{offer.get('description')}}
-                </p>
-                <p>
-                <h3>Status: {{offer.get('status')}}</h3>
-                </p>
+            <div class="item item-body center">
+                <p ng-click="test()">"{{offer.get('description')}}"</p>
+                <p>status: <b>{{offer.get('status') | uppercase}}</b></p>
+                <p>{{offer.createdAt | date: long}}</p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left" ng-if="(offer.get('status') == 'new')">

@@ -17,7 +17,9 @@
                     <input type="number" min="1" max="5" placeholder="Rating" ng-model="reviewData.rating">
                 </label>
                 <label class="item">
-                    <button class="button button-block button-positive" type="submit">Pay</button>
+                    <button class="button button-block button-positive" type="submit">
+                        Pay {{ offer.get('price') | currency }} to {{ offer.get('acceptedUser').get('username') }}
+                    </button>
                 </label>
             </div>
         </form>

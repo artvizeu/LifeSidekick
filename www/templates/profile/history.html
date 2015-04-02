@@ -1,13 +1,13 @@
 <ion-view view-title="History" class="bg-color">
     <ion-content>
         <div class="list card" ng-repeat="offer in offers">
-            <div class="item bar bar-header bar-positive" >
-                <h2>{{offer.get('name')}}</h2>
+            <div class="item bar bar-header card-header" >
+                <h2><b>{{offer.get('name')}}</b> by {{offer.get("owner").get("username")}}</h2>
             </div>
 
-            <div class="item item-body">
+            <div class="item item-body center">
                 <p>
-                    {{offer.get("owner").get("username")}}: "{{offer.get("comment")}}"
+                     "{{offer.get("comment")}}"
                 </p>
             </div>
 

@@ -1,12 +1,21 @@
 "use strict";
 
 lifeSidekickApp
-    .controller('HistoryCtrl', function($rootScope, $scope, dataService) {
+    .controller('HistoryCtrl', function($rootScope, $scope, dataService, loading) {
         $scope.offers = [];
         $scope.max = 5;
 
-        dataService.findDoneOffersByAcceptedUser($rootScope.currentUser)
-            .then(function (offers) {
-                $scope.offers = offers;
-            });
+        fetchList();
+
+        function fetchList() {
+            loading.show();
+            dataService.findDoneOffersByAcceptedUser($rootScope.currentUser)
+                .then(function (offers) {
+                    loading.hide();
+                    $scope.offers = offers;
+                }, function (error) {
+                    loading.hide();
+                    console.log(error);
+                });
+        }
     });

@@ -14,6 +14,7 @@
                 <p>"{{ wish.getDescription() }}"</p>
                 <p>{{ wish.getReachedMoney() | currency }} / {{wish.getPrice() | currency}}</p>
                 <progress max="100" value="{{progress}}"></progress>
+                <img class="full-image" ng-src="{{wish.getPhoto()}}" alt=""/>
             </div>
         </div>
     </ion-content>

@@ -3,13 +3,13 @@
         <div class="list card" ng-repeat="invite in invites">
 
             <div class="item bar bar-header card-header">
-                <h2>{{invite.get("offer").get("name")}} by {{invite.get("offer").get("owner").get("username")}}</h2>
+                <h2><b>{{invite.get("offer").get("name")}}</b> by {{invite.get("offer").get("owner").get("username")}}</h2>
                 <p>{{invite.get("offer").createdAt | date:longDate}}</p>
             </div>
 
-            <div class="item item-body">
-                <p>{{invite.get("offer").get("description")}}</p>
-                <h3>Price: ${{invite.get("offer").get("price")}}</h3>
+            <div class="item item-body center">
+                <p>"{{invite.get("offer").get("description")}}"</p>
+                <p>{{invite.get("offer").get("price") | currency}}</p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
